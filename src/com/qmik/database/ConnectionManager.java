@@ -1,10 +1,8 @@
 package com.qmik.database;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
-public class ConnectionFactory {
+public class ConnectionManager {
 	
 	public static Connection getConnection(String type, String url, String user, String pw) {
 		DriverLoader.load(type);
@@ -15,6 +13,16 @@ public class ConnectionFactory {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public static void close(AutoCloseable... resources) {
+		for (AutoCloseable resource : resources) {
+			try {
+				resource.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 }
