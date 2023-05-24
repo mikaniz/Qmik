@@ -17,7 +17,15 @@ public class MetaDataLoader {
 			connection = ConnectionManager.getConnection(database.getType(), database.getUrl(), database.getUser(), database.getPassword());
 			DatabaseMetaData metaData = connection.getMetaData();
 			
-			tableSet = metaData.getTables(database.getCatalog(), "PUBLIC", null, new String[] { "TABLE", "IGNORE_DELETED" });
+			switch (database.getType()) {
+			case "mysql":
+				tableSet = metaData.getTables(database.getCatalog(), "PUBLIC", null, new String[] { "TABLE", "IGNORE_DELETED" });
+				break;
+			case "postgresql":
+				tableSet = metaData.getTables(null, null, null, new String[] { "TABLE", "IGNORE_DELETED" });
+				break;
+			}
+			
 			while (tableSet.next()) {
 				Table table = new Table(tableSet.getString("TABLE_NAME"));
 				tables.add(table);
