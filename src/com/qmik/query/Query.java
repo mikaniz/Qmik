@@ -1,7 +1,7 @@
 package com.qmik.query;
 
-public interface Query {
-	
-	String getQuery();
-	
+import com.qmik.model.Model;
+
+public interface Query<T extends Model> {
+
 }
