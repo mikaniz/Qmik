@@ -26,8 +26,8 @@ public class Column {
 	}
 	
 	public void setType(int type) {
-		if (type == Types.INTEGER) this.type = "int";
-		else if (type == Types.FLOAT || type == Types.DOUBLE) this.type = "double";
+		if (type == Types.INTEGER) this.type = "Integer";
+		else if (type == Types.FLOAT || type == Types.DOUBLE) this.type = "Double";
 		else if (type == Types.VARCHAR || type == Types.CHAR || type == Types.LONGVARCHAR) this.type = "String";
 	}
 	
