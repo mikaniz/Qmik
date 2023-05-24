@@ -42,7 +42,7 @@ public class Condition<T> {
 	
 	@Override
 	public String toString() {
-		return new StringBuilder().append(name).append(condition).append(value).toString();
+		return new StringBuilder().append(name).append(condition).append("?").toString();
 	}
 	
 }
