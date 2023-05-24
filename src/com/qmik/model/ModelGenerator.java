@@ -51,8 +51,9 @@ public class ModelGenerator {
 
 		StringBuilder builder = new StringBuilder();
 		builder.append("package ").append(basePackage).append(".qmik.").append(database.getId()).append(";\n\n")
+				.append("import com.qmik.model.Model;\n")
 				.append("import com.qmik.query.Attribute;\n\n")
-				.append("public class ").append(table.getName().toUpperCase()).append(" {\n\n")
+				.append("public class ").append(table.getName().toUpperCase()).append(" implements Model {\n\n")
 				.append("\tfinal static String URL = \"").append(database.getUrl()).append("\";\n")
 				.append("\tfinal static String USER = \"").append(database.getUser()).append("\";\n")
 				.append("\tfinal static String PASSWORD = \"").append(database.getPassword()).append("\";\n")
