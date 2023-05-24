@@ -18,7 +18,7 @@ public class ConnectionManager {
 	public static void close(AutoCloseable... resources) {
 		for (AutoCloseable resource : resources) {
 			try {
-				resource.close();
+				if (resource != null) resource.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
