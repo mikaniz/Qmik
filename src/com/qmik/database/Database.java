@@ -32,7 +32,6 @@ public class Database {
 	}
 	
 	public void setUrl(String url) {
-		System.out.println(url);
 		if (url == null || !url.trim().startsWith("jdbc:")) return;
 		this.url = url;
 		

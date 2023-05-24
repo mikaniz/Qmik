@@ -24,7 +24,6 @@ public class ConfigHandler extends DefaultHandler {
 		if (qName.equals("database")) {
 			database = new Database();
 			database.setId(attributes.getValue("id"));
-			System.out.println(database);
 		}
 	}
 	
@@ -34,8 +33,6 @@ public class ConfigHandler extends DefaultHandler {
 		else if (qName.equals("user")) database.setUser(value);
 		else if (qName.equals("password")) database.setPassword(value);
 		else if (qName.equals("database")) {
-			System.out.println(database);
-			
 			if (database.getType() != null
 				&& database.getId() != null
 				&& database.getUrl() != null
