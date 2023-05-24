@@ -2,7 +2,9 @@ package com.qmik.query;
 
 import java.util.List;
 
-public interface ConditionQuery extends Query {
+import com.qmik.model.Model;
+
+public interface ConditionQuery<T extends Model> extends Query<T> {
 	
 	List<?> getCondition();
 	

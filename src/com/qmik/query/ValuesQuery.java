@@ -2,7 +2,9 @@ package com.qmik.query;
 
 import java.util.List;
 
-public interface ValuesQuery extends Query {
+import com.qmik.model.Model;
+
+public interface ValuesQuery<T extends Model> extends Query<T> {
 	
 	List<?> getValues();
 	
