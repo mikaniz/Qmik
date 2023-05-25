@@ -26,13 +26,13 @@ public class QueryExecutor {
 			for (int i = 0; i < length; i++) statement.setObject(i + 1, conditions.get(i).getValue());
 			
 			resultSet = statement.executeQuery();
-			if (resultSet.next()) {
-				ResultSetMetaData metaData = resultSet.getMetaData();
-				int columnCount = metaData.getColumnCount();
-				for (int i = 1; i <= columnCount; i++) {
-					String column = metaData.getColumnName(i);
-					result.put(column, resultSet.getObject(column));
-				}
+			if (!resultSet.next()) return null;
+			
+			ResultSetMetaData metaData = resultSet.getMetaData();
+			int columnCount = metaData.getColumnCount();
+			for (int i = 1; i <= columnCount; i++) {
+				String column = metaData.getColumnName(i);
+				result.put(column, resultSet.getObject(column));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
