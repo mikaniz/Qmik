@@ -54,13 +54,14 @@ public class ModelGenerator {
 				.append("import com.qmik.model.Model;\n")
 				.append("import com.qmik.query.Attribute;\n\n")
 				.append("public class ").append(table.getName().toUpperCase()).append(" implements Model {\n\n")
-				.append("\tfinal static String URL = \"").append(database.getUrl()).append("\";\n")
-				.append("\tfinal static String USER = \"").append(database.getUser()).append("\";\n")
-				.append("\tfinal static String PASSWORD = \"").append(database.getPassword()).append("\";\n")
-				.append("\tfinal static String TABLE = \"").append(table.getName()).append("\";\n\n");
+				.append("\tpublic final static String DRIVER = \"").append(database.getType()).append("\";\n")
+				.append("\tpublic final static String URL = \"").append(database.getUrl()).append("\";\n")
+				.append("\tpublic final static String USER = \"").append(database.getUser()).append("\";\n")
+				.append("\tpublic final static String PASSWORD = \"").append(database.getPassword()).append("\";\n")
+				.append("\tpublic final static String TABLE = \"").append(table.getName()).append("\";\n\n");
 		
 		for (Column column : table.getColumns()) {
-			builder.append("\tstatic Attribute<").append(column.getType()).append("> ").append(column.getName())
+			builder.append("\tpublic static Attribute<").append(column.getType()).append("> ").append(column.getName())
 					.append(" = new Attribute<>(\"").append(column.getName()).append("\");\n");
 		}
 		
