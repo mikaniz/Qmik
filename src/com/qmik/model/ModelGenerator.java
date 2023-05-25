@@ -19,7 +19,7 @@ import com.qmik.database.Table;
 
 public class ModelGenerator {
 	
-	public static void generate(String basePath) throws IOException {
+	public static void generate(String basePackage) throws IOException {
 		File file = new File("${project.basedir}/../qmik-config.xml");
 		SAXParserFactory factory = SAXParserFactory.newInstance();
 		
@@ -31,7 +31,7 @@ public class ModelGenerator {
 			List<Database> databases = handler.getDatabases();
 			for (Database database : databases) {
 				List<Table> tables = MetaDataLoader.load(database);
-				for (Table table : tables) generate(basePath, basePath.replaceAll("[/]", "."), database, table);
+				for (Table table : tables) generate(basePackage.replaceAll("[.]",  "/"), basePackage, database, table);
 			}
 		} catch (ParserConfigurationException e) {
 			e.printStackTrace();
